@@ -1,0 +1,23 @@
+{
+  "name": "picturelibrary",
+  "version": "1.0.0",
+  "description": "simple library for your favourite pictures",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Danila Beseda <Danila.Beseda1999@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7"
+  }
+}
