@@ -1,0 +1,180 @@
+.auth {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(255, 255, 255, 0.7);
+   overflow: auto;
+   &__window {
+      width: 430px;
+      transition: height 200ms ease;
+      border-radius: 10px;
+      background: linear-gradient(225deg, rgba(35, 43, 85, 0.75) 0%, rgba(35, 43, 85, 0.95) 100%);
+   }
+   &__container {
+      padding: 50px 30px;
+   }
+   &__list {
+      display: flex;
+      margin-bottom: 40px;
+   }
+   &__item {
+      text-transform: uppercase;
+      margin-right: 20px;
+      cursor: pointer;
+      color: #7878a2;
+      font-size: 20px;
+      transition: color 0.5s ease;
+      &:last-child {
+         margin-right: 0;
+      }
+      &.active {
+         color: #fff;
+      }
+      &__row {
+         display: flex;
+      }
+   }
+   & button,
+   label {
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 14px;
+      user-select: none;
+   }
+   & button {
+      height: 35px;
+      border-radius: 20px;
+      background-color: rgb(16, 89, 255);
+      &:hover {
+         background-color: rgb(11, 73, 219);
+      }
+      transition: background-color 0.5s ease;
+   }
+   & input {
+      margin-bottom: 20px;
+      height: 35px;
+      padding-left: 15px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 14px;
+      &:focus {
+         background-color: rgba(255, 255, 255, 0.3);
+      }
+      transition: background-color 0.5s ease;
+   }
+}
+
+.sign-in {
+   display: flex;
+   flex-direction: column;
+   &__email-label,
+   &__password-label {
+      margin-bottom: 10px;
+      margin-left: 15px;
+   }
+   &__row {
+      display: flex;
+      height: 30px;
+      margin-bottom: 20px;
+      & label {
+         position: relative;
+         width: 100%;
+         height: 100%;
+         line-height: 30px;
+         padding-left: 75px;
+         &::before {
+            content: "";
+            position: absolute;
+            width: 60px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+         }
+         &::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+            transition: left 0.3s ease;
+         }
+         & span::before {
+            content: "no";
+            position: absolute;
+            font-weight: 700;
+            left: 30px;
+            transition: left 0.3s ease;
+         }
+      }
+   }
+   &__checkbox {
+      display: none;
+      &:checked + label::after {
+         left: 40px;
+      }
+      &:checked + label::before {
+         background-color: rgb(16, 89, 255);
+      }
+      &:checked + label span::before {
+         content: "yes";
+         left: 10px;
+      }
+   }
+}
+
+.sign-up {
+   display: flex;
+   flex-direction: column;
+   &__email-label,
+   &__password-label,
+   &__confirm-label {
+      margin-bottom: 10px;
+      margin-left: 15px;
+   }
+}
+
+.sign-up.toggle-enter {
+   height: 243px;
+}
+.sign-up.toggle-enter-active {
+   height: 272px;
+}
+.sign-in.toggle-enter {
+   height: 272px;
+}
+.sign-in.toggle-enter-active {
+   height: 243px;
+}
+
+.toggle-enter {
+   transform: translateX(100%);
+   opacity: 0;
+}
+.toggle-enter-active {
+   transform: translateX(0px);
+   opacity: 1;
+}
+.toggle-exit {
+   transform: translateX(0px);
+   opacity: 1;
+}
+.toggle-exit-active {
+   transform: translateX(-100%);
+   opacity: 0;
+}
+
+.toggle-enter-active,
+.toggle-exit-active {
+   transition: all 0.3s ease;
+}

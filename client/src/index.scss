@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Georama:wght@400;500;700;900&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Georama", sans-serif;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+//-reset styles--------------------------------------------------------
+html {
+  box-sizing: border-box; //border-box для всех элементов
+  height: 100%;
+}
+body {
+  line-height: 1; //расстояние между строками по умолчанию 1
+}
+* {
+  padding: 0;
+  margin: 0;
+  border: 0; //убирает встроенные отступы и бордеры у всех элементов
+}
+
+ul li {
+  list-style: none; //удаляет дефолтные стили у списков
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent; //удаляет выделение голубым цветом при нажатии на ссылки на телефонах
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit; //наследование всеми элементами свойства box-sizing
+}
+
+button {
+  cursor: pointer; //изменение курсора при наведении на кнопки
+}
+
+:focus,
+:active {
+  outline: none; //убирает у input элементов обводку при нажатии
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none; // удаляет встроенные подчёркивания и т.д. для ссылок, посещённых ссылок и при наведении на ссылку
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+}
+/*
+img {
+  min-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+*/
+input::-webkit-outer-spin-button, //стрелки  у input type='number'
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield; //стрелки  у input type='number'
+}
