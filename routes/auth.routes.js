@@ -4,8 +4,8 @@ const router = Router()
 
 const User = require('../models/User')
 
-//auth/register
-router.post('/register', async (req, res) => {
+//auth/signin
+router.post('/signin', async (req, res) => {
    try {
       const { email, password } = req.body
 
@@ -25,8 +25,8 @@ router.post('/register', async (req, res) => {
    }
 })
 
-//auth/login
-router.post('/login', async (req, res) => {
+//auth/signup
+router.post('/signup', async (req, res) => {
    try {
       const { email, password } = req.body
 
