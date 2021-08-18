@@ -1,11 +1,13 @@
 const { Router } = require('express')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const config = require('config')
 const router = Router()
 
 const User = require('../models/User')
 
-//auth/signin
-router.post('/signin', async (req, res) => {
+//auth/signup
+router.post('/signup', async (req, res) => {
    try {
       const { email, password } = req.body
 
@@ -14,7 +16,7 @@ router.post('/signin', async (req, res) => {
          return res.status(400).json({ message: 'Такой пользователь уже есть в БД' })
       }
 
-      const hashedPassword = await bcript.hash(password, 10)
+      const hashedPassword = await bcrypt.hash(password, 10)
 
       const user = new User({ email, password: hashedPassword })
       await user.save()
@@ -25,8 +27,8 @@ router.post('/signin', async (req, res) => {
    }
 })
 
-//auth/signup
-router.post('/signup', async (req, res) => {
+//auth/signin
+router.post('/signin', async (req, res) => {
    try {
       const { email, password } = req.body
 
