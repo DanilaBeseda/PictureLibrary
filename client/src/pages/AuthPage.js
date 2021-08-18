@@ -1,25 +1,28 @@
 import { useState } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { toast } from 'react-toastify'
 
 import { useHttp } from '../hooks/http.hook'
 
 import '../styles/AuthPage.scss'
 
+
 export const AuthPage = () => {
    const { loading, request } = useHttp()
+
    const [toggle, setToggle] = useState(false)
    const [keepSignedIn, setKeepSignedIn] = useState(false)
    const [confirmPassword, setConfirmPassword] = useState('')
-   const [form, setForm] = useState({
-      email: '',
-      password: ''
-   })
+   const [form, setForm] = useState({ email: '', password: '' })
 
-   function toggleHandler(bool) {
+   function reset() {
       setKeepSignedIn(false)
       setConfirmPassword('')
       setForm({ email: '', password: '' })
+   }
 
+   function toggleHandler(bool) {
+      reset()
       setToggle(bool)
    }
 
@@ -30,24 +33,24 @@ export const AuthPage = () => {
    async function signIn() {
       try {
          const data = await request('/auth/signin', 'POST', { ...form })
-         console.log(data)
-         //todo hook message
+         reset()
       } catch (e) {
-         //todo hook message
+         toast.error(e.message)
       }
    }
 
    async function signUp() {
       if (form.password !== confirmPassword) {
-         alert('Неверный пароль')  //todo hook for messages
+         toast.error('Пароли не совпадают')
          return
       }
 
       try {
          const data = await request('/auth/signup', 'POST', { ...form })
-         //todo hook message
+         reset()
+         toast.success(data.message)
       } catch (e) {
-         //todo hook message
+         toast.error(e.message)
       }
    }
 
@@ -102,6 +105,7 @@ export const AuthPage = () => {
                                     name='checkbox'
                                     onChange={() => setKeepSignedIn(prev => !prev)}
                                     checked={keepSignedIn}
+                                    disabled={loading}
                                  />
                                  <label htmlFor='checkbox'><span>keep me signed in</span></label>
                               </div>
