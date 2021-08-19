@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom"
+import { Redirect, Route, Switch } from "react-router-dom"
 
 import { Library } from "../components/Library"
 import { Navbar } from "../components/Navbar"
@@ -13,15 +13,16 @@ export const PictureLibraryPage = () => {
          <Navbar />
          <div>
             <Switch>
-               <Route path='/picturelibrary/library' exact>
+               <Route path='/library' exact>
                   <Library />
                </Route>
-               <Route path='/picturelibrary/addpicture' exact>
+               <Route path='/addpicture' exact>
                   <AddPicture />
                </Route>
-               <Route path='/picturelibrary/signout' exact>
+               <Route path='/signout' exact>
                   <SignOut />
                </Route>
+               <Redirect to='/library' />
             </Switch>
          </div>
       </div>

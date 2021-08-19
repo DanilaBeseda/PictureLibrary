@@ -12,9 +12,9 @@ export const Navbar = () => {
                   <span>Picture Library</span>
                </div>
                <div className='navbar__links'>
-                  <NavLink to='/picturelibrary/library' activeStyle={{ color: '#fff' }}>library</NavLink>
-                  <NavLink to='/picturelibrary/addpicture' activeStyle={{ color: '#fff' }}>add picture</NavLink>
-                  <NavLink to='/picturelibrary/signout' activeStyle={{ color: '#fff' }}>sign out</NavLink>
+                  <NavLink to='/library' activeStyle={{ color: '#fff' }}>library</NavLink>
+                  <NavLink to='/addpicture' activeStyle={{ color: '#fff' }}>add picture</NavLink>
+                  <NavLink to='/signout' activeStyle={{ color: '#fff' }}>sign out</NavLink>
                </div>
             </div>
          </div>

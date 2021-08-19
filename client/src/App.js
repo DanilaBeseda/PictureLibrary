@@ -16,12 +16,7 @@ function App() {
       <AuthContext.Provider value={{ signIn, signOut, token, userId }}>
         <div className='pages'>
           {!!token
-            ? <Switch>
-              <Route path='/picturelibrary'>
-                <PictureLibraryPage />
-              </Route>
-              <Redirect to='/picturelibrary' />
-            </Switch>
+            ? <PictureLibraryPage />
 
             : <Switch>
               <Route path='/auth' exact>
