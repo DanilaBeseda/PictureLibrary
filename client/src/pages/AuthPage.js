@@ -34,9 +34,7 @@ export const AuthPage = () => {
    async function signIn() {
       try {
          const data = await request('/auth/signin', 'POST', { ...form })
-         //reset()
          auth.signIn(data.token, data.userId)
-         console.log(localStorage.getItem('userData'))
       } catch (e) {
          toast.error(e.message)
       }
