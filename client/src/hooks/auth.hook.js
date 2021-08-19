@@ -4,11 +4,13 @@ export const useAuth = () => {
    const [token, setToken] = useState(null)
    const [userId, setUserId] = useState(null)
 
-   const signIn = useCallback((jwtToken, id) => {
+   const signIn = useCallback((jwtToken, id, keepSignedIn) => {
       setToken(jwtToken)
       setUserId(id)
 
-      localStorage.setItem('userData', JSON.stringify({ userId: id, token: jwtToken }))
+      if (keepSignedIn) {
+         localStorage.setItem('userData', JSON.stringify({ userId: id, token: jwtToken }))
+      }
    }, [])
 
    const signOut = useCallback(() => {
