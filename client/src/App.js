@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <AuthContext.Provider value={signIn, signOut, token, userId}>
+      <AuthContext.Provider value={{ signIn, signOut, token, userId }}>
         <div className='pages'>
           <AuthPage />
         </div>
