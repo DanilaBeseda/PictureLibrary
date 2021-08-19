@@ -1,5 +1,6 @@
 import { ToastContainer } from 'react-toastify'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 import { AuthPage } from './pages/AuthPage'
 import { AuthContext } from './context/AuthContext'
@@ -11,13 +12,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { signIn, signOut, token, userId } = useAuth()
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [setIsLoaded])
+
   return (
     <>
       <AuthContext.Provider value={{ signIn, signOut, token, userId }}>
-        <div className='pages'>
+        {isLoaded && <div className='pages'>
+
           {!!token
             ? <PictureLibraryPage />
-
             : <Switch>
               <Route path='/auth' exact>
                 <AuthPage />
@@ -25,7 +32,8 @@ function App() {
               <Redirect to='/auth' />
             </Switch>
           }
-        </div>
+
+        </div>}
       </AuthContext.Provider>
 
       <ToastContainer />
