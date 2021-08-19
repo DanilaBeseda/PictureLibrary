@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { toast } from 'react-toastify'
 
 import { useHttp } from '../hooks/http.hook'
+import { AuthContext } from '../context/AuthContext'
 
 import '../styles/AuthPage.scss'
 
-
 export const AuthPage = () => {
    const { loading, request } = useHttp()
+   const auth = useContext(AuthContext)
 
    const [toggle, setToggle] = useState(false)
    const [keepSignedIn, setKeepSignedIn] = useState(false)
@@ -33,7 +34,9 @@ export const AuthPage = () => {
    async function signIn() {
       try {
          const data = await request('/auth/signin', 'POST', { ...form })
-         reset()
+         //reset()
+         auth.signIn(data.token, data.userId)
+         console.log(localStorage.getItem('userData'))
       } catch (e) {
          toast.error(e.message)
       }
@@ -48,6 +51,7 @@ export const AuthPage = () => {
       try {
          const data = await request('/auth/signup', 'POST', { ...form })
          reset()
+         setToggle(false)
          toast.success(data.message)
       } catch (e) {
          toast.error(e.message)
