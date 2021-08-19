@@ -9,7 +9,7 @@ export const Navbar = () => {
          <div className='navbar__container'>
             <div className='navbar__row'>
                <div className='navbar__logo'>
-                  <Link to='/picturelibrary'>Picture Library</Link>
+                  <span>Picture Library</span>
                </div>
                <div className='navbar__links'>
                   <NavLink to='/picturelibrary/library' activeStyle={{ color: '#fff' }}>library</NavLink>
