@@ -42,7 +42,10 @@ export const AuthPage = () => {
 
    async function signUp() {
       if (form.password !== confirmPassword) {
-         toast.error('Пароли не совпадают')
+         toast.error('Password mismatch')
+         return
+      } else if (!validateEmail(form.email)) {
+         toast.error('Incorrect email')
          return
       }
 
@@ -54,6 +57,11 @@ export const AuthPage = () => {
       } catch (e) {
          toast.error(e.message)
       }
+   }
+
+   function validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
    }
 
    return (
