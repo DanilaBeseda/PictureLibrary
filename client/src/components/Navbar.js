@@ -10,7 +10,7 @@ export const Navbar = () => {
 
    return (
       <div className='navbar'>
-         <div className='navbar__container'>
+         <div className='container'>
             <div className='navbar__row'>
                <div className='navbar__logo'>
                   <span>Picture Library</span>

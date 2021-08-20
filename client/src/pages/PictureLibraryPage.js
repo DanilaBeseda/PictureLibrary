@@ -11,20 +11,19 @@ export const PictureLibraryPage = () => {
    return (
       <div className='library-page'>
          <Navbar />
-         <div>
-            <Switch>
-               <Route path='/library' exact>
-                  <Library />
-               </Route>
-               <Route path='/addpicture' exact>
-                  <AddPicture />
-               </Route>
-               <Route path='/signout' exact>
-                  <SignOut />
-               </Route>
-               <Redirect to='/library' />
-            </Switch>
-         </div>
+
+         <Switch>
+            <Route path='/library' exact>
+               <Library />
+            </Route>
+            <Route path='/addpicture' exact>
+               <AddPicture />
+            </Route>
+            <Route path='/signout' exact>
+               <SignOut />
+            </Route>
+            <Redirect to='/library' />
+         </Switch>
       </div>
    )
 }
