@@ -3,10 +3,6 @@ import { NavLink } from "react-router-dom"
 import '../styles/Navbar.scss'
 
 export const Navbar = () => {
-   const NavLinkStyles = {
-      color: '#fff',
-      boxShadow: '#fff 0px 0px 7px 0px'
-   }
 
    return (
       <div className='navbar'>
@@ -16,9 +12,9 @@ export const Navbar = () => {
                   <span>Picture Library</span>
                </div>
                <div className='navbar__links'>
-                  <NavLink to='/library' activeStyle={NavLinkStyles}>library</NavLink>
-                  <NavLink to='/addpicture' activeStyle={NavLinkStyles}>add picture</NavLink>
-                  <NavLink to='/signout' activeStyle={NavLinkStyles}>sign out</NavLink>
+                  <NavLink to='/library' activeClassName="selected">library</NavLink>
+                  <NavLink to='/addpicture' activeClassName="selected" >add picture</NavLink>
+                  <NavLink to='/signout' activeClassName="selected" >sign out</NavLink>
                </div>
             </div>
          </div>
