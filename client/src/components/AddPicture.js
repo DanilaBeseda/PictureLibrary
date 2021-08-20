@@ -1,8 +1,17 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+
+import { LibraryContext } from '../context/LibraryContext'
+
 import '../styles/AddPicture.scss'
 
 export const AddPicture = () => {
+   const { animate } = useContext(LibraryContext)
    const [input, setInput] = useState({ name: '', url: '' })
+
+   const cls = ['add-picture']
+   if (animate) {
+      cls.push('exit-animation')
+   }
 
    function inputHandler(e) {
       setInput({ ...input, [e.target.name]: e.target.value })
@@ -10,7 +19,7 @@ export const AddPicture = () => {
 
    return (
       <div className='container'>
-         <div className='add-picture'>
+         <div className={cls.join(' ')}>
             <div className='add-picture__form'>
                <h2>Add your picture</h2>
                <div>
