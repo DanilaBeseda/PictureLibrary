@@ -1,11 +1,16 @@
 import { useContext, useState } from 'react'
 
 import { LibraryContext } from '../context/LibraryContext'
+import { AuthContext } from '../context/AuthContext'
+import { useHttp } from '../hooks/http.hook'
+import { toast } from 'react-toastify'
 
 import '../styles/AddPicture.scss'
 
 export const AddPicture = () => {
    const { animate } = useContext(LibraryContext)
+   const { token, signOut } = useContext(AuthContext)
+   const { loading, request } = useHttp()
    const [input, setInput] = useState({ name: '', url: '' })
 
    const cls = ['add-picture']
@@ -15,6 +20,20 @@ export const AddPicture = () => {
 
    function inputHandler(e) {
       setInput({ ...input, [e.target.name]: e.target.value })
+   }
+
+   async function addBtnHandler() {
+      try {
+         const data = await request('/addpicture', 'POST', { ...input }, {
+            Authorization: `Bearer ${token}`
+         })
+         toast.success(data.message)
+      } catch (e) {
+         toast.error(e.message)
+         if (e.message === 'jwt expired') {
+            signOut()
+         }
+      }
    }
 
    return (
@@ -46,7 +65,7 @@ export const AddPicture = () => {
                   <label htmlFor='url'>url</label>
                </div>
 
-               <button>add</button>
+               <button onClick={addBtnHandler} disabled={loading}>add</button>
             </div>
          </div>
       </div >
