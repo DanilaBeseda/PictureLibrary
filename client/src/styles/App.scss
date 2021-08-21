@@ -4,3 +4,10 @@
    background: url("https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80")
       center / cover no-repeat;
 }
+
+.container {
+   max-width: 1440px;
+   height: 100%;
+   padding: 0 10px;
+   margin: 0 auto;
+}
