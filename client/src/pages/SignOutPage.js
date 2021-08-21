@@ -5,7 +5,7 @@ import { LibraryContext } from '../context/LibraryContext'
 
 import '../styles/SignOut.scss'
 
-export const SignOut = () => {
+export const SignOutPage = () => {
    const { signOut } = useContext(AuthContext)
    const { animate } = useContext(LibraryContext)
 

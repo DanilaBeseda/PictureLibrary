@@ -1,16 +1,16 @@
 import { Redirect, Route, Switch } from "react-router-dom"
 
-import { Library } from "../components/Library"
+import { LibraryPage } from "./LibraryPage"
 import { Navbar } from "../components/Navbar"
-import { AddPicture } from "../components/AddPicture"
-import { SignOut } from "../components/SignOut"
+import { AddPicturePage } from "./AddPicturePage"
+import { SignOutPage } from "./SignOutPage"
 import { useAnimation } from "../hooks/animation.hook"
 import { LibraryContext } from '../context/LibraryContext'
 
 import '../styles/PictureLibraryPage.scss'
 
 
-export const PictureLibraryPage = () => {
+export const PictureLibraryPages = () => {
    const { animate, setAnimation, timeout } = useAnimation()
 
    return (
@@ -21,13 +21,13 @@ export const PictureLibraryPage = () => {
 
             <Switch>
                <Route path='/library' exact>
-                  <Library />
+                  <LibraryPage />
                </Route>
                <Route path='/addpicture' exact>
-                  <AddPicture />
+                  <AddPicturePage />
                </Route>
                <Route path='/signout' exact>
-                  <SignOut />
+                  <SignOutPage />
                </Route>
                <Redirect to='/library' />
             </Switch>

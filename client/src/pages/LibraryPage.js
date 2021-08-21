@@ -6,7 +6,7 @@ import { useHttp } from '../hooks/http.hook'
 
 import '../styles/Library.scss'
 
-export const Library = () => {
+export const LibraryPage = () => {
    const { request } = useHttp()
    const { signOut, token } = useContext(AuthContext)
    const [pictures, setPictures] = useState(null)

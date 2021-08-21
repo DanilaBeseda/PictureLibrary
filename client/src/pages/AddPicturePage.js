@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { LibraryContext } from '../context/LibraryContext'
 import { AuthContext } from '../context/AuthContext'
 import { useHttp } from '../hooks/http.hook'
-import { toast } from 'react-toastify'
 
 import '../styles/AddPicture.scss'
 
-export const AddPicture = () => {
+export const AddPicturePage = () => {
    const { animate } = useContext(LibraryContext)
    const { token, signOut } = useContext(AuthContext)
    const { loading, request } = useHttp()

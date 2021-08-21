@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { AuthPage } from './pages/AuthPage'
 import { AuthContext } from './context/AuthContext'
 import { useAuth } from './hooks/auth.hook';
-import { PictureLibraryPage } from './pages/PictureLibraryPage';
+import { PictureLibraryPages } from './pages/PictureLibraryPages';
 
 import './styles/App.scss'
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,7 +24,7 @@ function App() {
         {isLoaded && <div className='pages'>
 
           {!!token
-            ? <PictureLibraryPage />
+            ? <PictureLibraryPages />
             : <Switch>
               <Route path='/auth' exact>
                 <AuthPage />
