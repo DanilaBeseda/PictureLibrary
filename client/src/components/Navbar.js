@@ -8,15 +8,14 @@ export const Navbar = () => {
    const routes = [
       { path: '/library', name: 'library' },
       { path: '/addpicture', name: 'add picture' },
-      { path: '/signout', name: 'signout' }
+      { path: '/signout', name: 'sign out' }
    ]
 
    const { setAnimation, timeout } = useContext(LibraryContext)
    const history = useHistory()
-   const locPath = history.location.pathname
 
    function linkHandler(e, path) {     //need for animation
-      if (locPath === path) return
+      if (history.location.pathname === path) return
 
       e.preventDefault()
       setAnimation()
