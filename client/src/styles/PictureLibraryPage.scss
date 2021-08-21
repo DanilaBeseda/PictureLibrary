@@ -3,3 +3,12 @@
    height: 100%;
    background-color: rgba(255, 255, 255, 0.7);
 }
+
+@keyframes trm {
+   0% {
+      transform: translateY(-100%);
+   }
+   100% {
+      transform: translateY(0%);
+   }
+}
