@@ -4,11 +4,8 @@ export const useAnimation = () => {
    const [animate, setAnimate] = useState(false)
    const timeout = 300
 
-   const setAnimation = useCallback(() => {
-      setAnimate(true)
-      setTimeout(() => {
-         setAnimate(false)
-      }, timeout)
+   const setAnimation = useCallback((bool) => {
+      setAnimate(bool)
    }, [])
 
    return { animate, setAnimation, timeout }

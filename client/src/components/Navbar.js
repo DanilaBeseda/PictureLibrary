@@ -18,8 +18,9 @@ export const Navbar = () => {
       if (history.location.pathname === path) return
 
       e.preventDefault()
-      setAnimation()
+      setAnimation(true)
       setTimeout(() => {
+         setAnimation(false)
          history.push(path)
       }, timeout)
    }
