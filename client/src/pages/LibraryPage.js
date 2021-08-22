@@ -21,7 +21,7 @@ export const LibraryPage = () => {
          })
          setPictures(data)
       } catch (e) {
-         toast.error(e.message)
+         toast.error(e.message, { className: 'messages' })
          if (e.message === 'jwt expired') {
             signOut()
          }
