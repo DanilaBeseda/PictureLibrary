@@ -3,7 +3,13 @@
    height: 100%;
    background-color: rgba(255, 255, 255, 0.7);
 }
-
+.library-pages {
+   height: calc(100% - 60px); // minus navbar
+   overflow-y: auto;
+   &.of-hidden {
+      overflow-y: hidden;
+   }
+}
 @keyframes trm {
    0% {
       transform: translateY(-100%);
