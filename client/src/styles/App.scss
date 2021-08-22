@@ -12,6 +12,12 @@
    margin: 0 auto;
 }
 
-.messages {
-   top: 50px;
+.Toastify__toast-container.Toastify__toast-container--top-right {
+   top: 4em;
+}
+.Toastify__toast.Toastify__toast--success.messages {
+   background: linear-gradient(90deg, #00bf6f, #33cc8c);
+}
+.Toastify__toast.Toastify__toast--error.messages {
+   background: linear-gradient(90deg, #c3284d, #f76463);
 }

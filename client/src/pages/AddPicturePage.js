@@ -27,9 +27,9 @@ export const AddPicturePage = () => {
          const data = await request('/addpicture', 'POST', { ...input }, {
             Authorization: `Bearer ${token}`
          })
-         toast.success(data.message, { className: 'messages' })
+         toast.success(data.message)
       } catch (e) {
-         toast.error(e.message, { className: 'messages' })
+         toast.error(e.message)
          if (e.message === 'jwt expired') {
             signOut()
          }
