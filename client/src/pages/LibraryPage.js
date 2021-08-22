@@ -3,11 +3,12 @@ import { toast } from 'react-toastify'
 
 import { AuthContext } from '../context/AuthContext'
 import { useHttp } from '../hooks/http.hook'
+import { Loader } from '../components/Loader'
 
 import '../styles/LibraryPage.scss'
 
 export const LibraryPage = () => {
-   const { request } = useHttp()
+   const { loading, request } = useHttp()
    const { signOut, token } = useContext(AuthContext)
    const [pictures, setPictures] = useState(null)
 
@@ -31,13 +32,16 @@ export const LibraryPage = () => {
 
    return (
       <div className='container'>
-         <div className='library'>
-            {pictures && pictures.map((picture, index) => (
-               <div key={index} className='library__item'>
-                  <img src={picture.url} alt={picture.name} />
-               </div>
-            ))}
-         </div>
+         {!loading
+            ? <div className='library'>
+               {pictures && pictures.map((picture, index) => (
+                  <div key={index} className='library__item'>
+                     <img src={picture.url} alt={picture.name} />
+                  </div>
+               ))}
+            </div>
+            : <Loader />
+         }
       </div>
    )
 }
