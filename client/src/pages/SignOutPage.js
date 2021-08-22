@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { LibraryContext } from '../context/LibraryContext'
 
-import '../styles/SignOut.scss'
+import '../styles/SignOutPage.scss'
 
 export const SignOutPage = () => {
    const { signOut } = useContext(AuthContext)

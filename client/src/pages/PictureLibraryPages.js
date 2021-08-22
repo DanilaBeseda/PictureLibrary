@@ -7,7 +7,7 @@ import { SignOutPage } from "./SignOutPage"
 import { useAnimation } from "../hooks/animation.hook"
 import { LibraryContext } from '../context/LibraryContext'
 
-import '../styles/PictureLibraryPage.scss'
+import '../styles/PictureLibraryPages.scss'
 
 
 export const PictureLibraryPages = () => {

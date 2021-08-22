@@ -5,7 +5,7 @@ import { LibraryContext } from '../context/LibraryContext'
 import { AuthContext } from '../context/AuthContext'
 import { useHttp } from '../hooks/http.hook'
 
-import '../styles/AddPicture.scss'
+import '../styles/AddPicturePage.scss'
 
 export const AddPicturePage = () => {
    const { animate } = useContext(LibraryContext)

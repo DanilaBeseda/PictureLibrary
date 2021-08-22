@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 import { useHttp } from '../hooks/http.hook'
 
-import '../styles/Library.scss'
+import '../styles/LibraryPage.scss'
 
 export const LibraryPage = () => {
    const { request } = useHttp()
