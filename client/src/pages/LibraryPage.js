@@ -45,6 +45,7 @@ export const LibraryPage = () => {
             ? <div className={cls.join(' ')}>
                {pictures && pictures.map((picture, index) => (
                   <div key={index} className='library__item'>
+                     <span>{picture.name}</span>
                      <img src={picture.url} alt={picture.name} />
                   </div>
                ))}
