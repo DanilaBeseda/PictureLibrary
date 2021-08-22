@@ -30,6 +30,8 @@ export const LibraryPage = () => {
 
    useEffect(() => {
       getData()
+
+      return getData()
    }, [getData])
 
    const cls = ['library']
