@@ -14,11 +14,12 @@ export const LibraryPage = () => {
    const { animate } = useContext(LibraryContext)
    const [pictures, setPictures] = useState(null)
 
+   const controller = new AbortController()
    const getData = useCallback(async () => {
       try {
          const data = await request('/library', 'GET', null, {
             Authorization: `Bearez ${token}`
-         })
+         }, controller.signal)
          setPictures(data)
       } catch (e) {
          toast.error(e.message)
@@ -26,12 +27,16 @@ export const LibraryPage = () => {
             signOut()
          }
       }
+      //if i put controller.signal in dep, it will loop forever
+      // eslint-disable-next-line react-hooks/exhaustive-deps  
    }, [request, signOut, token])
 
    useEffect(() => {
       getData()
 
-      return getData()
+      return () => controller.abort()
+      //if i put controller in dep, it will loop forever
+      // eslint-disable-next-line react-hooks/exhaustive-deps  
    }, [getData])
 
    const cls = ['library']
