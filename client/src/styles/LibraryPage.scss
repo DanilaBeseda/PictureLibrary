@@ -28,14 +28,14 @@
       &:hover {
          transform: scale(1.1);
          z-index: 1;
-         & span {
+         & > span {
             opacity: 1;
             left: 10px;
             background-color: #4043a5c4;
             border-radius: 5px;
          }
       }
-      & span {
+      & > span {
          text-overflow: ellipsis;
          white-space: nowrap;
          overflow: hidden;
@@ -62,7 +62,7 @@
          padding: 2px 3px;
          width: 90%;
       }
-      & button {
+      & > button {
          position: absolute;
          border-radius: 0px 0px 0px 10px;
          top: 0px;
@@ -75,6 +75,45 @@
          width: 100%;
          height: 100%;
          object-fit: cover;
+      }
+   }
+   &__confirmation {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ffffffb9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      & span {
+         text-align: center;
+         color: rgba(35, 43, 85, 0.75);
+         font-weight: 500;
+         font-size: 18px;
+         padding: 0 20px;
+         margin-bottom: 25px;
+      }
+      & .row {
+         display: flex;
+         justify-content: center;
+         & button {
+            background-color: transparent;
+            margin-right: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 20px;
+            color: rgba(35, 43, 85, 0.75);
+            transition: transform 0.2s ease;
+            &:last-child {
+               margin-right: 0;
+            }
+            &:hover {
+               color: rgba(35, 43, 85, 0.95);
+               transform: scale(1.2);
+            }
+         }
       }
    }
    &__edit {
