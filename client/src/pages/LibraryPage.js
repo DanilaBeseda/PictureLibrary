@@ -1,4 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from 'react'
+import { Route, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { AuthContext } from '../context/AuthContext'
@@ -6,13 +7,15 @@ import { LibraryContext } from '../context/LibraryContext'
 import { useHttp } from '../hooks/http.hook'
 import { Loader } from '../components/Loader'
 import { Grid } from '../components/Grid'
+import { Slider } from '../components/Slider'
 
 import '../styles/LibraryPage.scss'
 
 export const LibraryPage = () => {
+   const history = useHistory()
    const { loading, request } = useHttp()
    const { signOut, token } = useContext(AuthContext)
-   const { animate } = useContext(LibraryContext)
+   const { animate, setActivePicture } = useContext(LibraryContext)
    const [pictures, setPictures] = useState([])
    const [isEdit, setIsEdit] = useState(false)
 
@@ -67,6 +70,15 @@ export const LibraryPage = () => {
       }
    }
 
+   function sliderBtnsHandler(bool, active = null) {
+      if (bool && !isEdit) {
+         setActivePicture(active)
+         history.push(`/library/${pictures[active]._id}`)
+      } else if (!bool) {
+         history.push('/library')
+      }
+   }
+
    const cls = ['library']
    if (animate) {
       cls.push('exit-animation')
@@ -74,6 +86,13 @@ export const LibraryPage = () => {
 
    return (
       <div className='container'>
+         <Route path='/library/:id'>
+            <Slider
+               pictures={pictures}
+               sliderBtnsHandler={sliderBtnsHandler}
+            />
+         </Route>
+
          {!loading
             ? <>
                <div className={cls.join(' ')}>
@@ -84,6 +103,7 @@ export const LibraryPage = () => {
                         isEdit={isEdit}
                         picture={picture}
                         changePictures={changePictures}
+                        sliderBtnsHandler={sliderBtnsHandler}
                      />
                   ))}
                </div>

@@ -6,12 +6,13 @@ import { AddPicturePage } from "./AddPicturePage"
 import { SignOutPage } from "./SignOutPage"
 import { useAnimation } from "../hooks/animation.hook"
 import { LibraryContext } from '../context/LibraryContext'
+import { useState } from "react"
 
 import '../styles/PictureLibraryPages.scss'
 
-
 export const PictureLibraryPages = () => {
    const { animate, setAnimation, timeout } = useAnimation()
+   const [activePicture, setActivePicture] = useState(null)
    const cls = ['library-pages']
 
    if (animate) {
@@ -19,13 +20,13 @@ export const PictureLibraryPages = () => {
    }
 
    return (
-      <LibraryContext.Provider value={{ animate, setAnimation, timeout }}>
+      <LibraryContext.Provider value={{ animate, setAnimation, timeout, activePicture, setActivePicture }}>
 
          <div className='library-page'>
             <Navbar />
             <div className={cls.join(' ')}>
                <Switch>
-                  <Route path='/library' exact>
+                  <Route path='/library'>
                      <LibraryPage />
                   </Route>
                   <Route path='/addpicture' exact>
