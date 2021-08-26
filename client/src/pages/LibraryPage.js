@@ -75,6 +75,7 @@ export const LibraryPage = () => {
          setActivePicture(pictures[active]._id)
          history.push(`/library/${pictures[active]._id}`)
       } else if (!bool) {
+         setActivePicture(null)
          history.push('/library')
       }
    }
@@ -109,6 +110,7 @@ export const LibraryPage = () => {
                      />
                   ))}
                </div>
+               {console.log(activePicture)}
                {pictures[0] && !activePicture && !animate && <div className='library__edit' onClick={editHandler}>
                   {!isEdit
                      ? <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
