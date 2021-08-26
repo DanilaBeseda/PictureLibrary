@@ -88,7 +88,7 @@ export const LibraryPage = () => {
    return (
       <div className='container'>
          <Route path='/library/:id'>
-            {pictures[0] &&
+            {pictures[0] && !animate &&
                <Slider
                   pictures={pictures}
                   sliderBtnsHandler={sliderBtnsHandler}
@@ -110,7 +110,7 @@ export const LibraryPage = () => {
                      />
                   ))}
                </div>
-               {console.log(activePicture)}
+
                {pictures[0] && !activePicture && !animate && <div className='library__edit' onClick={editHandler}>
                   {!isEdit
                      ? <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
