@@ -26,6 +26,8 @@ export const Grid = ({ index, isEdit, picture, changePictures, sliderBtnsHandler
          toast.success(data.message)
       } catch (e) {
          toast.error(e.message)
+      } finally {
+         setIsConfirmation(false)
       }
    }
 
