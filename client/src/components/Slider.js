@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
 
@@ -8,20 +8,21 @@ import '../styles/Slider.scss'
 
 export const Slider = ({ pictures, sliderBtnsHandler }) => {
    const history = useHistory()
-   const { activePicture, setActivePicture } = useContext(LibraryContext)
-
-   useEffect(() => {
-      !pictures[0] && history.push('/library')
-   }, [pictures, history])
+   const { activePicture } = useContext(LibraryContext)
+   const [index, setIndex] = useState(pictures.findIndex(picture => (picture._id === activePicture)))
 
    function BtnsHandler(value) {
-      history.push(`/library/${pictures[activePicture + value]._id}`)
-      setActivePicture(prev => prev + value)
+      history.push(`/library/${pictures[index + value]._id}`)
+      setIndex(prev => prev + value)
+   }
+
+   function findPicture() {
+      return pictures.find(picture => picture._id === activePicture)
    }
 
    return (
       <div className='slider'>
-         <span>{pictures[activePicture].name}</span>
+         <span>{findPicture().name}</span>
 
          <button className='cancel' onClick={() => sliderBtnsHandler(false)}>
             <svg width="22" height="22" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,22 +31,22 @@ export const Slider = ({ pictures, sliderBtnsHandler }) => {
          </button>
          <div className='slider__row'>
 
-            <button onClick={() => BtnsHandler(-1)} disabled={activePicture === 0}>
+            <button onClick={() => BtnsHandler(-1)} disabled={index === 0}>
                <svg fill='#fff' width="32" height="32" viewBox="0 0 32 32" version="1.1" aria-hidden="false"><path d="M20.6667 24.6666l-2 2L8 16 18.6667 5.3333l2 2L12 16l8.6667 8.6666z"></path></svg>
             </button>
-            {pictures[0] &&
-               <SwitchTransition>
-                  <CSSTransition
-                     key={activePicture}
-                     timeout={200}
-                     classNames='slide'
-                  >
-                     <img src={pictures[activePicture].url} alt={pictures[activePicture].name} />
-                  </CSSTransition>
-               </SwitchTransition>
-            }
 
-            <button onClick={() => BtnsHandler(1)} disabled={activePicture === pictures.length - 1}>
+            <SwitchTransition>
+               <CSSTransition
+                  key={activePicture}
+                  timeout={200}
+                  classNames='slide'
+               >
+                  <img src={findPicture().url} alt={findPicture().name} />
+               </CSSTransition>
+            </SwitchTransition>
+
+
+            <button onClick={() => BtnsHandler(1)} disabled={index === pictures.length - 1}>
                <svg fill='#fff' width="32" height="32" viewBox="0 0 32 32" version="1.1" aria-hidden="false"><path d="M11.3333 7.3333l2-2L24 16 13.3333 26.6666l-2-2L20 16l-8.6667-8.6667z"></path></svg>
             </button>
 

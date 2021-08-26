@@ -72,10 +72,9 @@ export const LibraryPage = () => {
 
    function sliderBtnsHandler(bool, active = null) {
       if (bool && !isEdit) {
-         setActivePicture(active)
+         setActivePicture(pictures[active]._id)
          history.push(`/library/${pictures[active]._id}`)
       } else if (!bool) {
-         setActivePicture(null)
          history.push('/library')
       }
    }
@@ -88,10 +87,12 @@ export const LibraryPage = () => {
    return (
       <div className='container'>
          <Route path='/library/:id'>
-            <Slider
-               pictures={pictures}
-               sliderBtnsHandler={sliderBtnsHandler}
-            />
+            {pictures[0] &&
+               <Slider
+                  pictures={pictures}
+                  sliderBtnsHandler={sliderBtnsHandler}
+               />
+            }
          </Route>
 
          {!loading
